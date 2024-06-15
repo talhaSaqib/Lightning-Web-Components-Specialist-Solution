@@ -1,5 +1,5 @@
 import { LightningElement, wire, api } from 'lwc';
-import { subscribe, MessageContext } from 'lightning/messageService';
+import { subscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
 import { getRecord } from 'lightning/uiRecordApi';
 
 // import BOATMC from the message channel
@@ -63,12 +63,9 @@ export default class BoatMap extends LightningElement {
     this._subscription = subscribe(
       this.messageContext,
       BOATMC,
-      (message) => this.handleMessage(message)
+      (message) => { this.boatId = message.recordId;},
+      { scope: APPLICATION_SCOPE }
     );
-  }
-
-  handleMessage(message) {
-    this.boatId = message.recordId;
   }
 
   // Calls subscribeMC()
