@@ -1,4 +1,5 @@
 <template>
+  <template lwc:if={boats}>
     <lightning-tabset variant="scoped">
       <lightning-tab label="Gallery">
         <div class="slds-scrollable_y">
@@ -33,14 +34,16 @@
 
       <lightning-tab label="Boat Editor">
         <!-- Scrollable div and lightning datatable go here -->
-        <lightning-datatable
-              hide-checkbox-column="true"	
-              key-field="Id"
-              data={boats}
-              columns={columns}
-              draft-values={draftValues}
-              onsave={handleSave}>
-        </lightning-datatable>
+        <div class="slds-scrollable_y">
+          <lightning-datatable
+                hide-checkbox-column="true"	
+                key-field="Id"
+                data={boats}
+                columns={columns}
+                draft-values={draftValues}
+                onsave={handleSave}>
+          </lightning-datatable>
+        </div>
 
       </lightning-tab>
 
@@ -52,4 +55,5 @@
       </lightning-tab>
       
     </lightning-tabset>
+  </template>
   </template>
