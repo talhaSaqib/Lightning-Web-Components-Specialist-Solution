@@ -4,15 +4,13 @@
       <!-- Top -->
       <lightning-layout-item size="12" >
         <lightning-card title="Find a Boat">
-            <slot name="actions" >
+          <div slot="actions">
                 <lightning-button 
                   label="New Boat"
                   title="New Boat"
-                  onclick={createNewBoat}
-                  class="slds-m-right_medium slds-float_right"
-                  style="margin-top:-30px">
+                  onclick={createNewBoat}>
                 </lightning-button>
-            </slot>
+          </div>
           <p class="slds-var-p-horizontal_small">
             <c-boat-search-form
               onsearch={searchBoats}

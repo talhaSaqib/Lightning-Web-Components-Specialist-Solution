@@ -2,11 +2,44 @@
     <template if:false={wiredRecord.data}>
       <!-- lightning card for the label when wiredRecord has no data goes here  -->
       <lightning-card>
-       <span class="slds-align_absolute-center no-boat-height">{labelPleaseSelectABoat}</span>
+       <span class="slds-align_absolute-center no-boat-height">{label.labelPleaseSelectABoat}</span>
     </lightning-card>
     </template>
+
     <template if:true={wiredRecord.data}>
        <!-- lightning card for the content when wiredRecord has data goes here  -->
+       <lightning-tabset variant="scoped">
+
+         <!--Boat Details-->
+         <lightning-tab label={label.labelDetails}>
+            <lightning-card title={boatName} icon-name={detailsTabIconName}>
+               <div slot="actions">
+                  <lightning-button label={label.labelFullDetails} onclick={navigateToRecordViewPage}></lightning-button>
+              </div>
+               <lightning-record-view-form
+                  object-api-name={boatDetailViewFields.BOAT_OBJECT_NAME}
+                  record-id={boatId}>
+                     <lightning-output-field field-name={boatDetailViewFields.BOAT_TYPE_FIELD}> </lightning-output-field>
+                     <lightning-output-field field-name={boatDetailViewFields.BOAT_LENGTH_FIELD}> </lightning-output-field>
+                     <lightning-output-field field-name={boatDetailViewFields.BOAT_PRICE_FIELD}> </lightning-output-field>
+                     <lightning-output-field field-name={boatDetailViewFields.BOAT_DESCRIPTION_FIELD}> </lightning-output-field>
+               </lightning-record-view-form>
+            </lightning-card>
+         </lightning-tab>
+
+          <!--Boat Reviews-->
+         <lightning-tab label={label.labelReviews} value="reviews">
+            <c-boat-reviews
+               boatId={boatId}>
+            </c-boat-reviews>
+         </lightning-tab>
+
+          <!--Add Review-->
+         <lightning-tab label={label.labelDetails}>
+            
+         </lightning-tab>
+
+     </lightning-tabset>
     </template>
   </template>
   
