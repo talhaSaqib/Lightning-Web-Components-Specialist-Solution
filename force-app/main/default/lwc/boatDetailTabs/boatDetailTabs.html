@@ -29,12 +29,16 @@
 
           <!--Boat Reviews-->
          <lightning-tab label={label.labelReviews} value="reviews">
-           
+            <c-boat-reviews
+               record-id={boatId}>
+            </c-boat-reviews>
          </lightning-tab>
 
           <!--Add Review-->
          <lightning-tab label={label.labelDetails}>
-            
+            <c-boat-add-review-form
+               record-id={boatId}>
+            </c-boat-add-review-form>
          </lightning-tab>
 
      </lightning-tabset>

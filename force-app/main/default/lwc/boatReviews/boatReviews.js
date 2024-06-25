@@ -1,7 +1,10 @@
 // imports
+import { LightningElement } from 'lwc';
+
+
 export default class BoatReviews extends LightningElement {
     // Private
-    boatId;
+    _boatId;
     error;
     boatReviews;
     isLoading;
@@ -10,6 +13,7 @@ export default class BoatReviews extends LightningElement {
     get recordId() { }
     set recordId(value) {
       //sets boatId attribute
+      this._boatId = value;
       //sets boatId assignment
       //get reviews associated with boatId
     }

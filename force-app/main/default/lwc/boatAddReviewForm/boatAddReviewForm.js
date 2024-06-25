@@ -1,10 +1,12 @@
 // imports
+import { LightningElement } from 'lwc';
+
 // import BOAT_REVIEW_OBJECT from schema - BoatReview__c
 // import NAME_FIELD from schema - BoatReview__c.Name
 // import COMMENT_FIELD from schema - BoatReview__c.Comment__c
 export default class BoatAddReviewForm extends LightningElement {
     // Private
-    boatId;
+    _boatId;
     rating;
     boatReviewObject = BOAT_REVIEW_OBJECT;
     nameField        = NAME_FIELD;
@@ -16,7 +18,9 @@ export default class BoatAddReviewForm extends LightningElement {
     get recordId() { }
     set recordId(value) {
       //sets boatId attribute
+      this._boatId = value;
       //sets boatId assignment
+     
     }
     
     // Gets user rating input from stars component
