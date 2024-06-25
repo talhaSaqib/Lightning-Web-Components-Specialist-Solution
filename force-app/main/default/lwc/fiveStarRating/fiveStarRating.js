@@ -19,16 +19,16 @@ export default class FiveStarRating extends LightningElement {
   isRendered;
 
   //getter function that returns the correct class depending on if it is readonly
-  starClass() {
+  get starClass() {
     return this.readOnly? READ_ONLY_CLASS : EDITABLE_CLASS;
   }
 
+  
   // Render callback to load the script once the component renders.
   renderedCallback() {
-    if (this.isRendered) {
-      return;
+    if (!this.isRendered) {
+      this.loadScript();
     }
-    this.loadScript();
     this.isRendered = true;
   }
 
@@ -36,7 +36,10 @@ export default class FiveStarRating extends LightningElement {
   //call the initializeRating function after scripts are loaded
   //display a toast with error message if there is an error loading script
   loadScript() {
-      loadScript(this, fivestar + '/rating.js')
+    Promise.all([
+      loadStyle(this, fivestar + '/rating.css'),
+      loadScript(this, fivestar + '/rating.js'),
+      ])
       .then(() => {
         // your code with calls to the JS library
         this.initializeRating();
@@ -73,7 +76,7 @@ export default class FiveStarRating extends LightningElement {
   // {detail: { rating: CURRENT_RATING }}); when the user selects a rating
   ratingChanged(rating) {
     let evt = new CustomEvent('ratingchange', {
-      detail: { rating: CURRENT_RATING }
+      detail: { rating: rating }
     });
     this.dispatchEvent(evt);
   }

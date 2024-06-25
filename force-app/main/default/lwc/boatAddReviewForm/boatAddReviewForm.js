@@ -1,9 +1,13 @@
 // imports
 import { LightningElement } from 'lwc';
 
-// import BOAT_REVIEW_OBJECT from schema - BoatReview__c
-// import NAME_FIELD from schema - BoatReview__c.Name
-// import COMMENT_FIELD from schema - BoatReview__c.Comment__c
+import BOAT_REVIEW_OBJECT from "@salesforce/schema/BoatReview__c";
+import NAME_FIELD from "@salesforce/schema/BoatReview__c.Name";
+import COMMENT_FIELD from "@salesforce/schema/BoatReview__c.Comment__c"; 
+
+const SUCCESS_TITLE = 'Review Created!';
+const SUCCESS_VARIANT = 'success';
+
 export default class BoatAddReviewForm extends LightningElement {
     // Private
     _boatId;
