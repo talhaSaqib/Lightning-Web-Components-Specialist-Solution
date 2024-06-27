@@ -14,11 +14,12 @@
          <lightning-tab label={label.labelDetails}>
             <lightning-card title={boatName} icon-name={detailsTabIconName}>
                <div slot="actions">
-                  <lightning-button label={label.labelFullDetails} onclick={navigateToRecordViewPage}></lightning-button>
+                  <lightning-button label={label.labelFullDetails} onclick={navigateToRecordViewPage} slot="actions"></lightning-button>
               </div>
                <lightning-record-view-form
-                  object-api-name={boatDetailViewFields.BOAT_OBJECT_NAME}
-                  record-id={boatId}>
+                  object-api-name='Boat__c'
+                  record-id={boatId}
+                  density='compact'>
                      <lightning-output-field field-name={boatDetailViewFields.BOAT_TYPE_FIELD}> </lightning-output-field>
                      <lightning-output-field field-name={boatDetailViewFields.BOAT_LENGTH_FIELD}> </lightning-output-field>
                      <lightning-output-field field-name={boatDetailViewFields.BOAT_PRICE_FIELD}> </lightning-output-field>
