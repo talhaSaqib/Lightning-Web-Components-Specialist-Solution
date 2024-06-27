@@ -3,7 +3,9 @@
     <!-- <lightning-record-edit-form> using boatReviewObject -->
       <lightning-record-edit-form
           object-api-name={boatReviewObject}
-          record-id={boatId}>
+          record-id={boatId}
+          onsuccess={handleSuccess}
+          onsubmit={handleSubmit}>
 
       <lightning-layout multiple-rows vertical-align="start">
         <lightning-layout-item size="8" padding="horizontal-small">
@@ -18,7 +20,8 @@
             <label class="slds-form-element__label" for="record-name">{labelRating}</label>
             <div class="slds-form-element__control">
               <!-- add five star rating component -->
-              <c-five-star-rating>
+              <c-five-star-rating
+                onratingchange={handleRatingChanged}>
               </c-five-star-rating>
             </div>
           </div>
@@ -30,7 +33,8 @@
       </lightning-layout>
       <div class="slds-align_absolute-center" style="margin-top: 5px">
              <!-- add submit button -->
-             <lightning-button icon-name="utility:save" type="submit" label="Submit" onsubmit={handleSubmit}></lightning-button>
+             <lightning-button icon-name="utility:save" type="submit" label="Submit">
+              </lightning-button>
       </div>
     </lightning-record-edit-form>
   </template>

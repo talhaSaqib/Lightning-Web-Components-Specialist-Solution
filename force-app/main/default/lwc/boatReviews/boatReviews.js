@@ -1,20 +1,24 @@
 // imports
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
 
 
 export default class BoatReviews extends LightningElement {
     // Private
-    _boatId;
+    boatId;
     error;
     boatReviews;
     isLoading;
     
     // Getter and Setter to allow for logic to run on recordId change
-    get recordId() { }
+    @api
+    get recordId() {
+      return this.boatId;
+     }
     set recordId(value) {
-      //sets boatId attribute
-      this._boatId = value;
-      //sets boatId assignment
+       //sets boatId attribute
+       this.setAttribute('boatId', value);
+       //sets boatId assignment
+       this.boatId = value;
       //get reviews associated with boatId
     }
     
@@ -28,6 +32,7 @@ export default class BoatReviews extends LightningElement {
     // returns immediately if boatId is empty or null
     // sets isLoading to true during the process and false when it’s completed
     // Gets all the boatReviews from the result, checking for errors.
+    @api
     getReviews() { }
     
     // Helper method to use NavigationMixin to navigate to a given record on click
